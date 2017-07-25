@@ -7,8 +7,8 @@
       Project Title: Income Tax Calculator 
       Filename: index.html
 
-      Author: 
-      Date:   
+      Author: Sharon Ballinger
+      Date: 22 July 2017
    -->
    <meta charset="utf-8" />
    <meta id="viewport" content="width=device-width, initial-scale=1.0">
@@ -174,13 +174,44 @@
              *                       INSERT YOUR CODE BELOW!
           *******************************************************************************/
            
-          else if(status == 1) {
+          else if (status == 1) { 
                 //INSERT YOUR CODE BELOW
-  
-  
-  
-  
-          }//end of married file jointly calculation
+          // Compute tax for Married filling jointly or qualifying widow(er) (MFJW 10%)
+              if (income <= 18550){
+                  tax = income * 0.10;
+                  taxRate = 10;
+              } // end of nested 'if' MFJW 10% 
+              else if (income <= 75300) { // MFJW 15%
+                  tax = 18550 * 0.10 + (income - 18550) * 0.15;
+                  taxRate = 15;
+              } // end of 'else if' MFJW 15%
+              else if (income <= 151900) { // MFJW 25%
+                  tax = 18550 * 0.10 + (75300 - 18550) * 0.15 + (income - 75300) * 0.25;
+                  taxRate = 25;
+              } // end of 'else if' MFJW 25%
+              else if (income <= 231450) { // MFJW 28%
+                  tax = 18550 * 0.10 + (75300 - 18550) * 0.15 + (151900 - 75300) * 0.25 +
+                        (income - 151900) * 0.28;
+                  taxRate = 28;
+              } // end of 'else if' MFJW 28%
+              else if (income <= 413350) { // MFJW 33%
+                  tax = 18550 * 0.10 + (75300 - 18550) * 0.15 + (151900 - 75300) * 0.25 +
+                        (231450 - 151900) * 0.28 + (income - 231450) * 0.33;
+                  taxRate = 33;
+              } //end of 'else if' MFJW 33%
+              else if (income <= 466950) { // 35%
+                  tax = 18550 * 0.10 + (75300 - 18550) * 0.15 + (151900 - 75300) * 0.25 +
+                        (231450 - 151900) * 0.28 + (413350 - 231450) * 0.33 + 
+                        (income - 413350) * 0.35;
+                  taxRate = 35;
+              } // end of 'else if' MFJW 35%
+              else { // anything else
+                  tax = 18550 * 0.10 + (75300 - 18550) * 0.15 + (151900 - 75300) * 0.25 +
+                        (231450 - 151900) * 0.28 + (413350 - 231450) * 0.33 +
+                        (466950 - 413350) * 0.35 + (income - 466950) * .396;
+                  taxRate = 39.6;
+              } //end of 'nested if' (all others)
+         }//end of married file jointly calculation
           
           
           /*******************************************************************************
@@ -195,12 +226,43 @@
             *                       INSERT YOUR CODE BELOW!
           *******************************************************************************/
                  
-          else if(status == 2) {
+          else if (status == 2) {
                 //INSERT YOUR CODE BELOW
-
-             
-             
-             
+                // Compute tax for Married Filling Separately (MFS)
+                if (income <= 9275) {
+                    tax = income * 0.10;
+                    taxRate = 10;
+                } // end of nested 'if' for 10% MFS
+                else if (income <= 37650) { // 15% MFS
+                    tax = 9275 * 0.10 + (income - 9275) * 0.15;
+                    taxRate = 15;
+                } // end of nested 'else if' for 15% MFS
+                else if (income <= 75950) { // 25% MFS
+                    tax = 9275 * 0.10 + (37650 - 9275) * 0.15 + (income - 37650) * 0.25;
+                    taxRate = 25;
+                } // end of 'else if' for 25% MFS
+                else if (income <= 115725) { // 28% MFS
+                    tax = 9275 * 0.10 + (37650 - 9275) * 0.15 + (75950 - 37650) * 0.25 +
+                          (income - 75950) * 0.28;
+                    taxRate = 28;
+                } // end of 'else if' for 28% MFS
+                else if (income <= 206675) { // 33% MFS
+                    tax = 9275 * 0.10 + (37650 - 9275) * 0.15 + (75950 - 37650) * 0.25 +
+                          (115725 - 75950) * 0.28 + (income - 115725) * 0.33;
+                    taxRate = 33;
+                } // end of 'else if' for 33% MFS
+                else if (income <= 233475) { // 35% MFS
+                    tax = 9275 * 0.10 + (37650 - 9275) * 0.15 + (75950 - 37650) * 0.25 +
+                          (115725 - 75950) * 0.28 + (206675 - 115725) * 0.33 +
+                          (income - 206675) * 0.35;
+                    taxRate = 35;
+                } // end of 'else if' for 35% MFS
+                else { // all others MFS
+                    tax = 9275 * 0.10 + (37650 - 9275) * 0.15 + (75950 - 37650) * 0.25 +
+                          (115725 - 75950) * 0.28 + (206675 - 115725) * 0.33 +
+                          (233475 - 206675) * 0.35 + (income - 233475) * .396;
+                    taxRate = 39.6;
+                } // end of 'nested if' (all others) MFS
           }//end of married file separately calculation
         
         
@@ -216,13 +278,44 @@
             *                       INSERT YOUR CODE BELOW!
           *******************************************************************************/
           
-          else if(status == 3) {
+          else if (status == 3) {
                 //INSERT YOUR CODE BELOW
- 
- 
-
-             
-          }//end of head of household calculation
+                // Compute tax for Head of Household (HH)
+                if (income <= 13250) { 
+                    tax = income * 0.10;
+                    taxRate = 10;
+                } // end of nested 'if' for 10% HH
+                else if (income <= 50400) { // 15% HH
+                    tax = 13250 * 0.10 + (income - 13250) * 0.15;
+                    taxRate = 15;
+                } // end of nested 'else if' for 15% HH
+                else if (income <= 130150) { // 25% HH
+                    tax = 13250 * 0.10 + (50400 - 13250) * 0.15 + (income - 50400) * 0.25;
+                    taxRate = 25;
+                } // end of nested 'else if' for 25% HH
+                else if (income <= 210800) { // 28% HH
+                    tax = 13250 * 0.10 + (50400 - 13250) * 0.15 + (130150 - 50400) * 0.25 +
+                          (income - 130150) * 0.28;
+                    taxRate = 28;
+                } // end of nested 'else if' for 28% HH
+                else if (income <= 413350) { // 33% HH
+                    tax = 13250 * 0.10 + (50400 - 13250) * 0.15 + (130150 - 50400) * 0.25 +
+                          (210800 - 130150) * 0.28 + (income - 210800) * 0.33;
+                    taxRate = 33;
+                } // end of nested 'else if' for 33% HH
+                else if (income <= 441000) { // 35% HH
+                    tax = 13250 * 0.10 + (50400 - 13250) * 0.15 + (130150 - 50400) * 0.25 +
+                          (210800 - 130150) * 0.28 + (413350 - 210800) * 0.33 +
+                          (income - 413350) * 0.35;
+                    taxRate = 35;
+                } // end of nested 'else if' for 35% HH
+                else { //anything else
+                    tax = 13250 * 0.10 + (50400 - 13250) * 0.15 + (130150 - 50400) * 0.25 +
+                          (210800 - 130150) * 0.28 + (413350 - 210800) * 0.33 +
+                          (441000-413350) * 0.35 + (income - 441000) * .396;
+                    taxRate = 39.6;
+                } //end of 'nested if' all others HH
+          } // end of Head of Household calculation
           
           
           /***************************************************************************************
@@ -277,9 +370,16 @@
               //This code resets the dropdown box to the "Single" filer status.
               document.getElementById("filingStatus").selectedIndex = 0;
               
-             //INSERT YOUR CODE BELOW
-
-
+              //INSERT YOUR CODE BELOW
+              
+              // This code removes the "Tax" value in the calculator
+              document.getElementById("taxEstimate").innerHTML = "";
+              
+              // This code removes the "Tax Bracket" value in the calculator
+              document.getElementById("taxBracket").innerHTML = "";
+              
+              
+              
 
 
       }//end of clearButton function
