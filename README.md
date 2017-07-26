@@ -21,12 +21,12 @@ https://sharonballinger.github.io/lesson5_javascript2/
 Conditional statements are used to perform/ask a question and to receive an action/answer – the answer will be either true or false.
 Coding a conditional statement is created by writing an expression with the use of relational operators.
 
-- ==    Equal               First name == "Sharon" (answer is true)
-- !=    Not equal           Summer != cold (answer is true)
-- <     Less than           1 < 5 (true)
-- <=    Less than/equal     Drinking age in Europe is <= 18 (false)
-- >     Greater than        25 > 20 (true)
-- >=    Greater than/equal  Drinking age in Europe is >= 18 (true)
+- `==` Equal `First name == "Sharon"` (answer is true)
+- `!=` Not equal           `Summer != cold` (answer is true)
+- `<`  Less than           `1 < 5` (true)
+- `<=` Less than/equal     `Drinking age in Europe is <= 18` (false)
+- `>`  Greater than        `25 > 20` (true)
+- `>=` Greater than/equal  `Drinking age in Europe is >= 18` (true)
 
 The above conditional statements argue only one statement with the answer being true or false. Adding logical operators: `&&` AND; `||` OR; `!` NOT, enables more than one expression to be strung together and creates a compound conditional expression. To make the conditional statements an active expression, Javascript has four different options: 'if', 'else', 'else if' or switch (See below _Composing a conditional Statement_).
 
